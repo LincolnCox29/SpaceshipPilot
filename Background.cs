@@ -10,7 +10,7 @@ namespace SpaceshipPilot
     internal class Background
     {
         public Rectangle Rectangle;
-        public float Position = 0f;
+        private float Position = 0f;
         public Texture background;
 
         public Background()

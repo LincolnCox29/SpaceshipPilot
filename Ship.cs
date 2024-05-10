@@ -13,12 +13,13 @@ namespace SpaceshipPilot
         private int animFrameCounter = 0;
         private int animFrameTime = 10;
 
-        private int fireFrameCounter = 0;
-        private int fireFrameTime = 144;
-
-        public List<Texture> animation;
+        private List<Texture> animation;
         private int _currentFrame = 0;
+
         public Vector2 position;
+
+        private float timeBetweenShots = 0.5f;
+        private float elapsedTimeSinceShot = 0f;
 
         public Ship()
         {
@@ -37,6 +38,19 @@ namespace SpaceshipPilot
             {
                 animFrameCounter = 0;
                 _currentFrame = (_currentFrame + 1) % animation.Count;
+            }
+        }
+
+        public void CheckingShootingCapability(BulletMenager bulletMenager)
+        {
+            elapsedTimeSinceShot += Raylib.GetFrameTime();
+
+            if (elapsedTimeSinceShot >= timeBetweenShots)
+            {
+                bulletMenager.AddNewBullet(new Vector2(position.X + 20, position.Y), new Vector2(0, -7));
+                bulletMenager.AddNewBullet(new Vector2(position.X + 60, position.Y), new Vector2(0, -7));
+
+                elapsedTimeSinceShot = 0f;
             }
         }
 

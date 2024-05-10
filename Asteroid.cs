@@ -8,15 +8,17 @@ using System.Threading.Tasks;
 
 namespace SpaceshipPilot
 {
-    public class Bullet
+    class Asteroid
     {
         public Vector2 Position;
         public Vector2 Velocity;
+        public Color Color;
 
-        public Bullet(Vector2 position, Vector2 velocity)
+        public Asteroid(Vector2 position, Vector2 velocity, Color color)
         {
             Position = position;
             Velocity = velocity;
+            Color = color;
         }
 
         public void Update()
