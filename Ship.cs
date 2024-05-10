@@ -10,8 +10,12 @@ namespace SpaceshipPilot
 {
     internal class Ship
     {
-        private int frameCounter = 0;
-        private int frameTime = 10;
+        private int animFrameCounter = 0;
+        private int animFrameTime = 10;
+
+        private int fireFrameCounter = 0;
+        private int fireFrameTime = 144;
+
         public List<Texture> animation;
         private int _currentFrame = 0;
         public Vector2 position;
@@ -26,12 +30,12 @@ namespace SpaceshipPilot
             position = new Vector2(170, 700);
         }
 
-        public void frameChanging()
+        public void Animation()
         {
-            frameCounter++;
-            if (frameCounter >= frameTime)
+            animFrameCounter++;
+            if (animFrameCounter >= animFrameTime)
             {
-                frameCounter = 0;
+                animFrameCounter = 0;
                 _currentFrame = (_currentFrame + 1) % animation.Count;
             }
         }
