@@ -14,11 +14,14 @@ namespace SpaceshipPilot
         public Vector2 Velocity;
         public Color Color;
 
-        public Asteroid(Vector2 position, Vector2 velocity, Color color)
+        public Texture Texture;
+
+        public Asteroid(Vector2 position, Vector2 velocity, Texture texture)
         {
             Position = position;
             Velocity = velocity;
-            Color = color;
+            Color = new Color(255, 255, 255, 255);
+            Texture = texture;
         }
 
         public void Update()

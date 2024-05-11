@@ -1,5 +1,6 @@
 ﻿using Microsoft.Toolkit.HighPerformance;
 using Raylib_CsLo;
+using System;
 using System.Numerics;
 
 namespace SpaceshipPilot
@@ -10,6 +11,7 @@ namespace SpaceshipPilot
         static AsteroidMenager asteroidMenager = new AsteroidMenager();
         static Background bg = new Background();
         static Ship ship = new Ship();
+        static Random random = new Random();
 
         private static void Main(string[] args)
         {
@@ -48,6 +50,15 @@ namespace SpaceshipPilot
             asteroidMenager.Draw();
             bulletMenager.Draw();
             Raylib.EndDrawing();
+        }
+
+        public static string PickRandomFile(string folderPath)
+        {
+            string[] files = Directory.GetFiles(folderPath);
+
+            int randomIndex = random.Next(0, files.Length);
+
+            return "assets/asteroids/" + Path.GetFileName(files[randomIndex]);
         }
     }
 }

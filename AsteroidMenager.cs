@@ -15,26 +15,11 @@ namespace SpaceshipPilot
         private float timeBetweenSpawn = 5f;
         private float elapsedTimeSpawn = 0f;
 
-        private Texture texture;
-
         Random random = new Random();
-
-        private Color[] ColorsList = new Color[8]
-        {
-            new Color(229, 190, 1, 255),
-            new Color(79, 79, 79, 255),
-            new Color(83, 75, 79, 255),
-            new Color(65, 74, 76, 255),
-            new Color(282, 100, 24, 255), 
-            new Color(11, 88, 31, 255),
-            new Color(19, 72, 63, 255),
-            new Color(116, 55, 12, 255)
-        };
 
         public AsteroidMenager()
         {
             asteroids = new List<Asteroid>();
-            texture = Raylib.LoadTexture("assets/asteroid.png");
         }
 
         public void Update()
@@ -53,13 +38,14 @@ namespace SpaceshipPilot
             }
         }
 
-        public void AddNewAsteroid(Vector2 position, Vector2 velocity, Color color) => asteroids.Add(new Asteroid(position, velocity, color));
+        public void AddNewAsteroid(Vector2 position, Vector2 velocity, Texture texture)
+            => asteroids.Add(new Asteroid(position, velocity, texture));
 
         public void Draw()
         {
             foreach (Asteroid asteroid in asteroids)
             {
-                Raylib.DrawTextureV(texture, asteroid.Position, asteroid.Color);
+                Raylib.DrawTextureV(asteroid.Texture, asteroid.Position, asteroid.Color);
             }
         }
 
@@ -71,9 +57,9 @@ namespace SpaceshipPilot
             {
                 int ySpeed = random.Next(1, 4);
 
-                Color rndCollor = ColorsList[random.Next(0, ColorsList.Length)];
+                Texture rndTexture = Raylib.LoadTexture(Game.PickRandomFile("assets/asteroids"));
 
-                AddNewAsteroid(new Vector2(random.Next(40,360) + 20, - 100), new Vector2(0, ySpeed), rndCollor);
+                AddNewAsteroid(new Vector2(random.Next(40,360) + 20, - 100), new Vector2(0, ySpeed), rndTexture);
 
                 elapsedTimeSpawn = 0f;
 
