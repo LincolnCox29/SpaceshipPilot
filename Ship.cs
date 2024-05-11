@@ -97,6 +97,22 @@ namespace SpaceshipPilot
             {
                 position.X += speed;
             }
+            CheckingBounds();
+        }
+
+        private void CheckingBounds()
+        {
+            if (position.X < -10)
+                position.X = -10;
+
+            if (position.X > 330)
+                position.X = 330;
+
+            if (position.Y < -10)
+                position.Y = -10;
+
+            if (position.Y > 730)
+                position.Y = 730;
         }
     }
 }

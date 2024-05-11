@@ -12,21 +12,25 @@ namespace SpaceshipPilot
     {
         public Vector2 Position;
         public Vector2 Velocity;
+        public float rotationSpeed;
+        public float rotation;
         public Color Color;
 
         public Texture Texture;
 
-        public Asteroid(Vector2 position, Vector2 velocity, Texture texture)
+        public Asteroid(Vector2 position, Vector2 velocity, Texture texture, float rotationAngle)
         {
             Position = position;
             Velocity = velocity;
             Color = new Color(255, 255, 255, 255);
             Texture = texture;
+            rotationSpeed = rotationAngle;
         }
 
         public void Update()
         {
             Position += Velocity;
+            rotation += rotationSpeed;
         }
     }
 }
