@@ -37,7 +37,7 @@ namespace SpaceshipPilot
         {
             foreach (Bullet bullet in bullets)
             {
-                Raylib.DrawCircleV(bullet.Position, 2, new Color(229, 190, 1, 255));
+                Raylib.DrawRectangleV(bullet.Position, new Vector2(3,10), new Color(229, 190, 1, 255));
             }
         }
     }

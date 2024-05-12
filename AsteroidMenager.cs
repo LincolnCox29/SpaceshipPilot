@@ -38,8 +38,8 @@ namespace SpaceshipPilot
             }
         }
 
-        public void AddNewAsteroid(Vector2 position, Vector2 velocity, Texture texture, float rotationSpeed)
-            => asteroids.Add(new Asteroid(position, velocity, texture, rotationSpeed));
+        public void AddNewAsteroid(Vector2 position)
+            => asteroids.Add(new Asteroid(position));
 
         public void Draw()
         {
@@ -55,13 +55,8 @@ namespace SpaceshipPilot
 
             if (elapsedTimeSpawn >= timeBetweenSpawn)
             {
-                int ySpeed = random.Next(1, 4);
 
-                Texture rndTexture = Raylib.LoadTexture(Game.PickRandomFile("assets/asteroids"));
-
-                float rotationSpeed = random.Next(-5, 5) * 0.01f;
-
-                AddNewAsteroid(new Vector2(random.Next(40,360) + 20, - 100), new Vector2(0, ySpeed), rndTexture, rotationSpeed);
+                AddNewAsteroid(new Vector2(random.Next(20,360) + 20, - 100));
 
                 elapsedTimeSpawn = 0f;
 

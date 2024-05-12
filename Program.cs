@@ -52,13 +52,13 @@ namespace SpaceshipPilot
             Raylib.EndDrawing();
         }
 
-        public static string PickRandomFile(string folderPath)
+        public static string PickRandomFile(string folderPath, string size)
         {
-            string[] files = Directory.GetFiles(folderPath);
+            string[] files = Directory.GetFiles(folderPath + size);
 
             int randomIndex = random.Next(0, files.Length);
 
-            return "assets/asteroids/" + Path.GetFileName(files[randomIndex]);
+            return $"assets/asteroids/{size}/" + Path.GetFileName(files[randomIndex]);
         }
     }
 }
