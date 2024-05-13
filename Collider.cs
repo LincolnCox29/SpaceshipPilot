@@ -3,22 +3,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SpaceshipPilot
 {
-    class Collider
+    public class Collider
     {
-        private Vector2 position;
+        public Vector2 position;
         private float width;
         private float height;
 
-        public Collider(float scale, float _width, float _height, Vector2 _position) 
+        public Collider(float scale, Vector2 textureSize, Vector2 _position)
         { 
 
-            width = _width * scale;
-            height = _height * scale;
+            width = textureSize.X * scale;
+            height = textureSize.Y * scale;
             position = _position;
         }
 

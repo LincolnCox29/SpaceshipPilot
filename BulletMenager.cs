@@ -17,9 +17,9 @@ namespace SpaceshipPilot
             bullets = new List<Bullet>();
         }
 
-        public void Update()
+        public void Update(AsteroidMenager asteroidMenager)
         {
-            for(int i = 0; i < bullets.Count; i++)
+            for (int i = 0; i < bullets.Count; i++)
             {
                 if (bullets[i].Position.Y < 0)
                 {
@@ -27,7 +27,19 @@ namespace SpaceshipPilot
                     i--;
                     continue;
                 }
+
                 bullets[i].Update();
+
+                for (int a = 0; a < asteroidMenager.asteroids.Count; a++)
+                {
+                    if (bullets[i].Collider.CheckCollision(asteroidMenager.asteroids[a].Collider))
+                    {
+                        asteroidMenager.asteroids[a].Damage(1, asteroidMenager);
+                        bullets.RemoveAt(i);
+                        i--;
+                        break;
+                    }
+                }
             }
         }
 
@@ -37,7 +49,7 @@ namespace SpaceshipPilot
         {
             foreach (Bullet bullet in bullets)
             {
-                Raylib.DrawRectangleV(bullet.Position, new Vector2(3,10), new Color(229, 190, 1, 255));
+                Raylib.DrawRectangleV(bullet.Position, bullet.Size, bullet.Color);
             }
         }
     }

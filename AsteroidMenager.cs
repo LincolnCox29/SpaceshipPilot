@@ -10,7 +10,7 @@ namespace SpaceshipPilot
 {
     class AsteroidMenager
     {
-        private List<Asteroid> asteroids;
+        public List<Asteroid> asteroids;
 
         private float timeBetweenSpawn = 5f;
         private float elapsedTimeSpawn = 0f;

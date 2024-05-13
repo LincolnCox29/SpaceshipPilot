@@ -34,7 +34,7 @@ namespace SpaceshipPilot
 
         private static void Update()
         {
-            bulletMenager.Update();
+            bulletMenager.Update(asteroidMenager);
             asteroidMenager.Update();
             ship.CheckingShootingCapability(bulletMenager);
             ship.Animation();

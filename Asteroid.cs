@@ -22,15 +22,24 @@ namespace SpaceshipPilot
         private int hp;
         private string size;
 
+        public Collider Collider;
+
+        public float renderScale;
+
         Random random = new Random();
 
         public Asteroid(Vector2 position)
         {
+            renderScale = 2f;
             Position = position;
-            Speed = RandomSpeed();
-            Color = new Color(255, 255, 255, 255);
             RandomSize();
             Texture = RandomTexture(size);
+            Collider = new Collider(
+                                    renderScale, 
+                                    new Vector2(Texture.width, Texture.height),
+                                    position);
+            Speed = RandomSpeed();
+            Color = new Color(255, 255, 255, 255);
             rotationSpeed = RandomRotation();
         }
 
@@ -38,6 +47,17 @@ namespace SpaceshipPilot
         {
             Position += Speed;
             rotation += rotationSpeed;
+            Collider.Update(Position);
+        }
+
+        public void Damage(int damage, AsteroidMenager asteroidMenager)
+        {
+            hp -= damage;
+            if (hp <= 0)
+            {
+                asteroidMenager.asteroids.Remove(this);
+            }
+
         }
 
         private Texture RandomTexture(string size)
@@ -51,15 +71,15 @@ namespace SpaceshipPilot
             {
                 case 1:
                     size = "little";
-                    hp = 3;
+                    hp = 2;
                     break;
                 case 2:
                     size = "normal";
-                    hp = 2;
+                    hp = 3;
                     break;
                 case 3:
                     size = "big";
-                    hp = 1;
+                    hp = 4;
                     break;
             }
         }
