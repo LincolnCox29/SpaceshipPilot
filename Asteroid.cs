@@ -19,7 +19,7 @@ namespace SpaceshipPilot
         public Color Color;
         public Texture Texture;
 
-        private int hp;
+        public int hp;
         private string size;
 
         public Collider Collider;
@@ -57,7 +57,6 @@ namespace SpaceshipPilot
             {
                 asteroidMenager.asteroids.Remove(this);
             }
-
         }
 
         private Texture RandomTexture(string size)

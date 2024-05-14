@@ -16,6 +16,10 @@ namespace SpaceshipPilot
         private List<Texture> animation;
         private int _currentFrame = 0;
 
+        private int hp;
+
+        public Collider Collider;
+
         public Vector2 position;
 
         private float timeBetweenShots = 0.5f;
@@ -23,15 +27,46 @@ namespace SpaceshipPilot
 
         public Ship()
         {
+            hp = 10;
             animation = new List<Texture>()
             {
                 Raylib.LoadTexture("assets/space_ship1.png"),
                 Raylib.LoadTexture("assets/space_ship2.png")
             };
             position = new Vector2(170, 700);
+            Collider = new Collider(
+                                    0.5f,
+                                    new Vector2(animation[_currentFrame].height, animation[_currentFrame].width),
+                                    position);
         }
 
-        public void Animation()
+        public void Update(BulletMenager bulletMenager, AsteroidMenager asteroidMenager)
+        {
+            CheckingShootingCapability(bulletMenager);
+            Animation();
+            Move();
+            Collider.Update(position);
+            Collision(asteroidMenager);
+        }
+
+        public Texture currentFrame() => animation[_currentFrame];
+
+        private void Collision(AsteroidMenager asteroidMenager)
+        {
+            for (int a = 0; a < asteroidMenager.asteroids.Count; a++)
+            {
+                if (Collider.CheckCollision(asteroidMenager.asteroids[a].Collider))
+                {
+                    Console.WriteLine($"Collision detected with asteroid {a}");
+                    int AsteroidHP = asteroidMenager.asteroids[a].hp;
+                    Damage(AsteroidHP);
+                    asteroidMenager.asteroids[a].Damage(AsteroidHP, asteroidMenager);
+                    a--;
+                }
+            }
+        }
+
+        private void Animation()
         {
             animFrameCounter++;
             if (animFrameCounter >= animFrameTime)
@@ -41,7 +76,7 @@ namespace SpaceshipPilot
             }
         }
 
-        public void CheckingShootingCapability(BulletMenager bulletMenager)
+        private void CheckingShootingCapability(BulletMenager bulletMenager)
         {
             elapsedTimeSinceShot += Raylib.GetFrameTime();
 
@@ -54,9 +89,7 @@ namespace SpaceshipPilot
             }
         }
 
-        public Texture currentFrame() => animation[_currentFrame];
-
-        public void Move()
+        private void Move()
         {
             float speed = 2f;
             float diagonalSpeed = (float)Math.Sqrt(speed * speed / 2);
@@ -81,23 +114,28 @@ namespace SpaceshipPilot
                 position.X += diagonalSpeed;
                 position.Y += diagonalSpeed;
             }
-            else if (Raylib.IsKeyDown(KeyboardKey.KEY_W))
-            {
+            else if (Raylib.IsKeyDown(KeyboardKey.KEY_W))            
                 position.Y -= speed;
-            }
-            else if (Raylib.IsKeyDown(KeyboardKey.KEY_A))
-            {
+            
+            else if (Raylib.IsKeyDown(KeyboardKey.KEY_A))           
                 position.X -= speed;
-            }
-            else if (Raylib.IsKeyDown(KeyboardKey.KEY_S))
-            {
+            
+            else if (Raylib.IsKeyDown(KeyboardKey.KEY_S))          
                 position.Y += speed;
-            }
-            else if (Raylib.IsKeyDown(KeyboardKey.KEY_D))
-            {
+            
+            else if (Raylib.IsKeyDown(KeyboardKey.KEY_D))        
                 position.X += speed;
-            }
+            
             CheckingBounds();
+        }
+
+        private void Damage(int damage)
+        {
+            hp -= damage;
+            if (hp <= 0)
+            {
+                Raylib.CloseWindow();
+            }
         }
 
         private void CheckingBounds()

@@ -36,9 +36,7 @@ namespace SpaceshipPilot
         {
             bulletMenager.Update(asteroidMenager);
             asteroidMenager.Update();
-            ship.CheckingShootingCapability(bulletMenager);
-            ship.Animation();
-            ship.Move();
+            ship.Update(bulletMenager, asteroidMenager);
             bg.setPosition();
         }
 
