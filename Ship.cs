@@ -40,7 +40,7 @@ namespace SpaceshipPilot
                                     position);
         }
 
-        public void Update(BulletMenager bulletMenager, AsteroidMenager asteroidMenager)
+        public void Update(BulletManager bulletMenager, AsteroidManager asteroidMenager)
         {
             CheckingShootingCapability(bulletMenager);
             Animation();
@@ -51,7 +51,7 @@ namespace SpaceshipPilot
 
         public Texture currentFrame() => animation[_currentFrame];
 
-        private void Collision(AsteroidMenager asteroidMenager)
+        private void Collision(AsteroidManager asteroidMenager)
         {
             for (int a = 0; a < asteroidMenager.asteroids.Count; a++)
             {
@@ -76,7 +76,7 @@ namespace SpaceshipPilot
             }
         }
 
-        private void CheckingShootingCapability(BulletMenager bulletMenager)
+        private void CheckingShootingCapability(BulletManager bulletMenager)
         {
             elapsedTimeSinceShot += Raylib.GetFrameTime();
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SpaceshipPilot
 {
-    class AsteroidMenager
+    class AsteroidManager
     {
         public List<Asteroid> asteroids;
 
@@ -17,7 +17,7 @@ namespace SpaceshipPilot
 
         Random random = new Random();
 
-        public AsteroidMenager()
+        public AsteroidManager()
         {
             asteroids = new List<Asteroid>();
         }

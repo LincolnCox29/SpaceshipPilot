@@ -50,7 +50,7 @@ namespace SpaceshipPilot
             Collider.Update(Position);
         }
 
-        public void Damage(int damage, AsteroidMenager asteroidMenager)
+        public void Damage(int damage, AsteroidManager asteroidMenager)
         {
             hp -= damage;
             if (hp <= 0)

@@ -7,8 +7,8 @@ namespace SpaceshipPilot
 {
     class Game
     {
-        static BulletMenager bulletMenager = new BulletMenager();
-        static AsteroidMenager asteroidMenager = new AsteroidMenager();
+        static BulletManager bulletMenager = new BulletManager();
+        static AsteroidManager asteroidMenager = new AsteroidManager();
         static Background bg = new Background();
         static Ship ship = new Ship();
         static Random random = new Random();

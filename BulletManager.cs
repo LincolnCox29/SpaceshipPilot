@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace SpaceshipPilot
 {
-    class BulletMenager
+    class BulletManager
     {
         private List<Bullet> bullets;
 
-        public BulletMenager()
+        public BulletManager()
         {
             bullets = new List<Bullet>();
         }
 
-        public void Update(AsteroidMenager asteroidMenager)
+        public void Update(AsteroidManager asteroidMenager)
         {
             for (int i = 0; i < bullets.Count; i++)
             {
