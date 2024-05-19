@@ -35,8 +35,8 @@ namespace SpaceshipPilot
             };
             position = new Vector2(170, 700);
             Collider = new Collider(
-                                    0.5f,
-                                    new Vector2(animation[_currentFrame].height, animation[_currentFrame].width),
+                                    1f,
+                                    new Vector2(animation[_currentFrame].width, animation[_currentFrame].height),
                                     position);
         }
 
@@ -82,8 +82,8 @@ namespace SpaceshipPilot
 
             if (elapsedTimeSinceShot >= timeBetweenShots)
             {
-                bulletMenager.AddNewBullet(new Vector2(position.X + 20, position.Y), new Vector2(0, -7));
-                bulletMenager.AddNewBullet(new Vector2(position.X + 60, position.Y), new Vector2(0, -7));
+                bulletMenager.AddNewBullet(new Vector2(position.X, position.Y), new Vector2(0, -7));
+                bulletMenager.AddNewBullet(new Vector2(position.X + 40, position.Y), new Vector2(0, -7));
 
                 elapsedTimeSinceShot = 0f;
             }

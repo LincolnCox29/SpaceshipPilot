@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hmOd+OsJKkQRe9d/EoCzbZ1I9zwZKpXJMp3xsGBzt7eWZwPp/LxtwUeR+Rlxd4dNt3ESLEnp1sbZZytXsePQdg==",
+  "dgSpecHash": "848n0uA4XXEW1Ba7zdorC2Po6i1iIdkLaWfiyoi1kmoB4tknnyGlKNDglOaiKRA9w0ST8hZr0pKexVzu/rj31Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\79242\\Desktop\\Projects\\SpaceshipPilot\\SpaceshipPilot.csproj",
+  "projectFilePath": "C:\\Users\\79242\\Desktop\\Projects\\SpaceshipPilot\\SpaceshipPilot\\SpaceshipPilot.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\79242\\.nuget\\packages\\microsoft.toolkit.highperformance\\7.1.2\\microsoft.toolkit.highperformance.7.1.2.nupkg.sha512",
     "C:\\Users\\79242\\.nuget\\packages\\raylib-cslo\\4.2.0.9\\raylib-cslo.4.2.0.9.nupkg.sha512",

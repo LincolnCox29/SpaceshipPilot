@@ -20,7 +20,7 @@ namespace SpaceshipPilot
 
         public void setPosition()
         {
-            Position -= 0.3f;
+            Position -= 0.4f;
             Rectangle = new Rectangle(0, Position, 400, 800);
         }
     }

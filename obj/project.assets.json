@@ -158,11 +158,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\79242\\Desktop\\Projects\\SpaceshipPilot\\SpaceshipPilot.csproj",
+      "projectUniqueName": "C:\\Users\\79242\\Desktop\\Projects\\SpaceshipPilot\\SpaceshipPilot\\SpaceshipPilot.csproj",
       "projectName": "SpaceshipPilot",
-      "projectPath": "C:\\Users\\79242\\Desktop\\Projects\\SpaceshipPilot\\SpaceshipPilot.csproj",
+      "projectPath": "C:\\Users\\79242\\Desktop\\Projects\\SpaceshipPilot\\SpaceshipPilot\\SpaceshipPilot.csproj",
       "packagesPath": "C:\\Users\\79242\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\79242\\Desktop\\Projects\\SpaceshipPilot\\obj\\",
+      "outputPath": "C:\\Users\\79242\\Desktop\\Projects\\SpaceshipPilot\\SpaceshipPilot\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\79242\\AppData\\Roaming\\NuGet\\NuGet.Config",
